@@ -10,7 +10,7 @@
 		extends="struts-default">
 		<default-action-ref name="welcome" />
 		<action name="welcome">
-			<result>/s2-jsp/welcome.jsp</result>
+			<result>/pages/welcome.jsp</result>
 		</action>
 		<!--  
 		<action name="saisir_tva">
