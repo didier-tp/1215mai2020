@@ -14,11 +14,12 @@ public class EmpruntAction extends ActionSupport {
 	public String calculerMensualite() {
 		//...
 		try { 
-			double montant = Double.parseDouble(smontant);
-			double taux = Double.parseDouble(staux);
-			int nbMois = Integer.parseInt(snbmois);
+			double montant = Double.parseDouble(smontant); //ex: 10000
+			double taux = Double.parseDouble(staux); //ex: 0.96
+			int nbMois = Integer.parseInt(snbmois); //ex: 120
 			double tauxMensuel = taux / 12 / 100;
 			this.mensualite =  montant * tauxMensuel / ( 1 - Math.pow(1+tauxMensuel,-nbMois));
+			//ex: 87,4306268211912 s
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
