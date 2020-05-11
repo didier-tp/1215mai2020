@@ -12,5 +12,11 @@
     taux: <s:property value="taux" /> <br/>
     tva: <s:property value="tva" /> <br/>
     ttc: <s:property value="ttc" /> <br/>
+     <hr/>
+      <s:url var="saisir_tva_url" action="saisir_tva"></s:url>
+      <s:a href="%{saisir_tva_url}" >autre calcul de tva</s:a> <br/>
+      <hr/>
+     <s:url var="welcome_url" action="welcome"></s:url>
+     <s:a href="%{welcome_url}" >retour accueil</s:a> <br/>
 </body>
 </html>
