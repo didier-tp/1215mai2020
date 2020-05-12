@@ -11,7 +11,7 @@ public class DeviseDaoSimu implements DeviseDao {
 	
 	private Map<String,Devise> deviseMap = new HashMap<>();
 	
-	DeviseDaoSimu(){
+	public DeviseDaoSimu(){
 		//jeux de données pour tests/simulation
 		deviseMap.put("EUR", new Devise("EUR","Euro",1.0));
 		deviseMap.put("USD", new Devise("USD","Dollar",1.1));
