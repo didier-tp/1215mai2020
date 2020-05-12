@@ -32,6 +32,11 @@
 			<result name="success">/pages/devises.jsp</result>
 		</action>
 		
+		<action name="supprimer_devise"
+			class="tp.web.actions.DeviseAction" method="supprimerDevise">
+			<result name="success" type="redirect">refresh_devises</result>
+		</action>
+		
 		
 		<action name="calculer_emprunt"
 			class="tp.web.actions.EmpruntAction" method="calculerMensualite">
