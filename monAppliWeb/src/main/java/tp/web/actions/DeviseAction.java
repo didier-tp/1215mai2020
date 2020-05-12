@@ -22,14 +22,15 @@ public class DeviseAction extends ActionSupport {
 	
 	public DeviseAction(){
 		super();
-		deviseDao=new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
+		deviseDao=DeviseDaoSimu.getInstance();//new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
 	}
 	
 	public String supprimerDevise() {
 		HttpServletRequest request = (HttpServletRequest)
 				ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
 		String codeDeviseAsupprimer = request.getParameter("code");
-		System.out.println("codeDeviseAsupprimer="+codeDeviseAsupprimer);
+		System.out.println("codeDeviseAsupprimer="+codeDeviseAsupprimer
+				          + " deviseAction="+this.toString());
 		deviseDao.deleteDevise(codeDeviseAsupprimer);
 		return "success";
 	}
@@ -42,6 +43,7 @@ public class DeviseAction extends ActionSupport {
 	
 	public String rafraichirListeDevise() {
 		this.listeDevises = deviseDao.findAllDevise();
+		System.out.println("rafraichirListeDevise appelé sur deviseAction="+this.toString());
 		return "success";
 	}
 	

@@ -10,8 +10,17 @@ import tp.entity.Devise;
 public class DeviseDaoSimu implements DeviseDao {
 	
 	private Map<String,Devise> deviseMap = new HashMap<>();
+	//Design pattern "Singleton":
+	private static DeviseDaoSimu uniqueInstance=null;
+	public static DeviseDaoSimu getInstance() {
+		if(uniqueInstance==null) {
+			uniqueInstance=new DeviseDaoSimu();
+		}
+		return uniqueInstance;
+	}
 	
-	public DeviseDaoSimu(){
+	
+	private DeviseDaoSimu(){
 		//jeux de données pour tests/simulation
 		deviseMap.put("EUR", new Devise("EUR","Euro",1.0));
 		deviseMap.put("USD", new Devise("USD","Dollar",1.1));
