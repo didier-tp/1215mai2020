@@ -35,4 +35,16 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 	}
 
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	
+
 }

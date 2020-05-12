@@ -9,6 +9,9 @@
 </head>
 <body>
    <h1>WELCOME</h1>
+   <s:url var="login_url" action="login"></s:url>
+   <s:a href="%{login_url}" >login</s:a> <br/>
+   
    <!--  s:url a le paramétrage var="..." avec struts 2.5 
          et c'était id="...." avec struts 2.3  -->
    <s:url var="saisir_tva_url" action="saisir_tva"></s:url>
