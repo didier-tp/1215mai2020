@@ -26,7 +26,13 @@
    <tr><th>code</th><th>nom</th><th>change</th><th>suppression</th></tr>
    <s:iterator value="listeDevises"> 
      <tr>
-       <td><s:property value="code" /></td>
+       <td>
+           <s:url var="selectionner_devise_url" action="selectionner_devise">
+                <s:param name="code" value="%{code}"></s:param>
+           </s:url>
+           <!--  url sera à peu près s2/selectionner_devise.action?code=EUR -->
+           <s:a href="%{selectionner_devise_url}" ><s:property value="code" /></s:a>
+       </td>
        <td><s:property value="nom" /> </td>
        <td><s:property value="change" /> </td>
        <td> 
