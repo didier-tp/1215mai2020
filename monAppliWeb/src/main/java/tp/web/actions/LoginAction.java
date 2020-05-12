@@ -21,6 +21,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	
 	
 	public String login() {
+		System.out.println("login, utilisateur="+utilisateur);
 		//utilsateur.username et utilisateur.password 
 		//initialisés par struts 2 selon valeurs saisies
 		//simulation d'un test de password:
