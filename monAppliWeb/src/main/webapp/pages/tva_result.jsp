@@ -8,6 +8,7 @@
 <title>tva_result</title>
 </head>
 <body>
+    username : <s:property value="#session.username" />     
     ht: <s:property value="ht" /> <br/>
     taux: <s:property value="taux" /> <br/>
     tva: <s:property value="tva" /> <br/>
