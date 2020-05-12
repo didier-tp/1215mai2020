@@ -10,12 +10,19 @@
 <body>
    <h3> liste des devises</h3>
    <table border="1">
-   <tr><th>code</th><th>nom</th><th>change</th></tr>
+   <tr><th>code</th><th>nom</th><th>change</th><th>suppression</th></tr>
    <s:iterator value="listeDevises"> 
      <tr>
        <td><s:property value="code" /></td>
        <td><s:property value="nom" /> </td>
        <td><s:property value="change" /> </td>
+       <td> 
+           <s:url var="supprimer_devise_url" action="supprimer_devise">
+                <s:param name="code" value="%{code}"></s:param>
+           </s:url>
+           <!--  url sera à peu près s2/supprimer_devise.action?code=EUR -->
+           <s:a href="%{supprimer_devise_url}" >supprimer</s:a>
+       </td>
     </tr>
     </s:iterator>
   </table>
