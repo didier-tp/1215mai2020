@@ -2,6 +2,11 @@ package tp.web.actions;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import tp.dao.DeviseDao;
@@ -21,7 +26,11 @@ public class DeviseAction extends ActionSupport {
 	}
 	
 	public String supprimerDevise() {
-		//...
+		HttpServletRequest request = (HttpServletRequest)
+				ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+		String codeDeviseAsupprimer = request.getParameter("code");
+		System.out.println("codeDeviseAsupprimer="+codeDeviseAsupprimer);
+		deviseDao.deleteDevise(codeDeviseAsupprimer);
 		return "success";
 	}
 	
