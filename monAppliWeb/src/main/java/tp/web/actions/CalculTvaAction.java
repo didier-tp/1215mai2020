@@ -32,9 +32,8 @@ public class CalculTvaAction extends ActionSupport implements SessionAware {
 			this.ttc = dHt + this.tva;
 			
 			String username = (String) sessionMap.get("username");
-			if(username!=null) {
-				System.out.println("username="+username);
-			}
+			System.out.println("username="+username);
+		
 			
 			return "success";
 		} catch (Exception e) {

@@ -21,6 +21,17 @@
 			<result>/pages/emprunt_input.jsp</result>
 		</action>
 		
+		<action name="login">
+			<result>/pages/login.jsp</result>
+		</action>
+		
+		<action name="verif_login"
+			class="tp.web.actions.LoginAction" method="login">
+			<result name="success">/pages/welcome.jsp</result>
+			<result name="input">/pages/login.jsp</result>
+		</action>
+		
+		
 		<action name="calculer_tva"
 			class="tp.web.actions.CalculTvaAction" method="calculer">
 			<result name="success">/pages/tva_result.jsp</result>
