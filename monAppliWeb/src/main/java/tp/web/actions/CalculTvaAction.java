@@ -1,15 +1,27 @@
 package tp.web.actions;
 
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CalculTvaAction extends ActionSupport {
+public class CalculTvaAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
+	
+	private SessionMap<String,Object> sessionMap;
 	
 	private String ht; //à saisir
 	private String taux; //à saisir
 	private Double tva; //à calculer et afficher
 	private Double ttc;
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		sessionMap = (SessionMap<String,Object> ) session;
+	} 
 	
 	public String calculer() {
 		//...
@@ -18,6 +30,12 @@ public class CalculTvaAction extends ActionSupport {
 			double dTaux = Double.parseDouble(taux);
 			this.tva = dHt * dTaux/100;
 			this.ttc = dHt + this.tva;
+			
+			String username = (String) sessionMap.get("username");
+			if(username!=null) {
+				System.out.println("username="+username);
+			}
+			
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,7 +69,9 @@ public class CalculTvaAction extends ActionSupport {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	} 
+	}
+
+	
 	
 	
 	
