@@ -27,6 +27,12 @@
 			<result name="input">/pages/tva_input.jsp</result>
 		</action>
 		
+		<action name="refresh_devises"
+			class="tp.web.actions.DeviseAction" method="rafraichirListeDevise">
+			<result name="success">/pages/devises.jsp</result>
+			<result name="input">/pages/devises.jsp</result>
+		</action>
+		
 		
 		<action name="calculer_emprunt"
 			class="tp.web.actions.EmpruntAction" method="calculerMensualite">
