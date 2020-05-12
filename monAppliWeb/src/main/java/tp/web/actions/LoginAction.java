@@ -26,7 +26,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		//simulation d'un test de password:
 		//tester en tp si la valeur du password est = à "pwd" + username
 		//ok si username="user1" et si password="pwduser1"
-		if(utilisateur.getPassword().equals("pwd"+utilisateur.getUsername())) {
+		if( utilisateur.getPassword() != null &&
+			utilisateur.getPassword().equals("pwd"+utilisateur.getUsername())) {
 			sessionMap.put("username", utilisateur.getUsername());
 			return "success";
 		}else {

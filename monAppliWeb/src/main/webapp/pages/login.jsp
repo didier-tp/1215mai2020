@@ -9,7 +9,7 @@
 </head>
 <body>
    <h3>login</h3> 
-  <s:form method="post" action="verif_login" >
+  <s:form method="post" action="login" >
       <s:textfield  name="utilisateur.username" label="username">
       </s:textfield>
       
