@@ -22,6 +22,7 @@ public class DeviseAction extends ActionSupport {
 	
 	public DeviseAction(){
 		super();
+		devise=new Devise();
 		deviseDao=DeviseDaoSimu.getInstance();//new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
 	}
 	
@@ -37,7 +38,7 @@ public class DeviseAction extends ActionSupport {
 	
 	
 	public String ajouterOuMajDevise() {
-		//...
+		deviseDao.saveOrUpdateDevise(this.devise);
 		return "success";
 	}
 	
