@@ -8,6 +8,8 @@
 <title>tva_result</title>
 </head>
 <body>
+    <!--  le prefixe #session. est interprété par struts2 et ongl
+          et ça permet d'accéder à des éléments préalablement stocké en session  -->
     username : <s:property value="#session.username" />  <br/>   
     ht: <s:property value="ht" /> <br/>
     taux: <s:property value="taux" /> <br/>
