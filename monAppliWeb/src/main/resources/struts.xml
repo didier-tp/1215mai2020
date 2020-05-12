@@ -30,7 +30,6 @@
 		<action name="refresh_devises"
 			class="tp.web.actions.DeviseAction" method="rafraichirListeDevise">
 			<result name="success">/pages/devises.jsp</result>
-			<result name="input">/pages/devises.jsp</result>
 		</action>
 		
 		

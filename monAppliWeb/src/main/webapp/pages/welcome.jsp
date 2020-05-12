@@ -13,7 +13,11 @@
          et c'était id="...." avec struts 2.3  -->
    <s:url var="saisir_tva_url" action="saisir_tva"></s:url>
    <s:a href="%{saisir_tva_url}" >tva</s:a> <br/>
+   
    <s:url var="saisir_emprunt_url" action="saisir_emprunt"></s:url>
    <s:a href="%{saisir_emprunt_url}" >emprunt</s:a> <br/>
+   
+   <s:url var="refresh_devises_url" action="refresh_devises"></s:url>
+   <s:a href="%{refresh_devises_url}" >devises</s:a> <br/>
 </body>
 </html>
