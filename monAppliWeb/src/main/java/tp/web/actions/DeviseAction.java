@@ -42,6 +42,14 @@ public class DeviseAction extends ActionSupport {
 		return "success";
 	}
 	
+	public String selectionnerDevise() {
+		HttpServletRequest request = (HttpServletRequest)
+				ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+		String codeDeviseSelectionnee = request.getParameter("code");
+		this.devise = deviseDao.findDeviseByCode(codeDeviseSelectionnee);
+		return "success";
+	}
+	
 	public String rafraichirListeDevise() {
 		this.listeDevises = deviseDao.findAllDevise();
 		System.out.println("rafraichirListeDevise appelé sur deviseAction="+this.toString());

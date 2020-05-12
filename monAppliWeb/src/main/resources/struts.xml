@@ -42,6 +42,11 @@
 			<result name="success" type="redirect">refresh_devises</result>
 		</action>
 		
+		<action name="selectionner_devise"
+			class="tp.web.actions.DeviseAction" method="selectionnerDevise">
+			<result name="success">/pages/devises.jsp</result>
+		</action>
+		
 		
 		<action name="calculer_emprunt"
 			class="tp.web.actions.EmpruntAction" method="calculerMensualite">
