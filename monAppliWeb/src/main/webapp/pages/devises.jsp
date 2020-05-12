@@ -10,7 +10,7 @@
 <body>
    <h3> liste des devises</h3>
    <table border="1">
-   <tr><th>code<th><th>nom<th><th>change<th></tr>
+   <tr><th>code</th><th>nom</th><th>change</th></tr>
    <s:iterator value="listeDevises"> 
      <tr>
        <td><s:property value="code" /></td>
