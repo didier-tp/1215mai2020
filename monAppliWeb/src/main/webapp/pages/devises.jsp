@@ -8,6 +8,19 @@
 <title>devises</title>
 </head>
 <body>
+   <h3> devise :</h3>
+    <s:form method="post" action="ajoutOuMaj_devise" >
+      <s:textfield  name="devise.code" label="code">
+      </s:textfield>
+      
+       <s:textfield  name="devise.nom" label="nom">
+      </s:textfield>
+      
+       <s:textfield  name="devise.change" label="change">
+      </s:textfield>
+      <s:submit value="ajouter ou mettre à jour"></s:submit>
+  </s:form>
+
    <h3> liste des devises</h3>
    <table border="1">
    <tr><th>code</th><th>nom</th><th>change</th><th>suppression</th></tr>
