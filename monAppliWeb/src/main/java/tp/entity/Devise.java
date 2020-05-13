@@ -1,13 +1,23 @@
 package tp.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /*
  * classe Devise = structure de données stockée en base en fin de semaine
  * entité persistante .
  */
 
+@Entity
 public class Devise {
+	@Id
+	@Column(length = 24)
 	private String code; //ex: "EUR" , "USD" , ...
+	
 	private String nom ; //ex: "euro" , "dollar" , ...
+	
+	@Column(name = "eChange")
 	private Double change; //nb unité pour 1 euro
 	
 	

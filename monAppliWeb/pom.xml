@@ -44,6 +44,14 @@
 			<version>1.4.199</version>
 		</dependency>
 		
+		<!-- dans les versions recentes de hibernate-core
+		     il y a déjà le standard JPA -->
+		<dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>5.4.6.Final</version>
+         </dependency>
+		
 		
 		<!-- 
 		
