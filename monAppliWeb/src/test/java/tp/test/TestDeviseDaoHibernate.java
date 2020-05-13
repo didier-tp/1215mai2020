@@ -5,11 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tp.dao.DeviseDao;
 import tp.dao.DeviseDaoJpa;
 import tp.dao.MyJpaUtil;
 import tp.entity.Devise;
@@ -17,13 +18,24 @@ import tp.entity.Devise;
 public class TestDeviseDaoHibernate {
 	
 	private DeviseDaoJpa deviseDao;
+	private EntityManager em =null;
+	private static EntityManagerFactory emf = null;
+	
+	@BeforeClass
+	public static void initEmf() {
+		emf = MyJpaUtil.getEntityManagerFactory();
+	}
 	
 	@Before
 	public void initDao() {
 		deviseDao= new DeviseDaoJpa();
-		EntityManagerFactory emf = MyJpaUtil.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
+		em= emf.createEntityManager();
 		deviseDao.setEntityManager(em);
+	}
+	
+	@After
+	public void endDao() {
+	   em.close();
 	}
 	
 	@Test
