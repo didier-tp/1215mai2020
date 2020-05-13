@@ -77,7 +77,7 @@ public class DeviseDaoJdbc implements DeviseDao {
 		try {
 			cn = this.etablirConnection();
 			Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Devise");
+			ResultSet rs = st.executeQuery("SELECT * FROM DEVISE");
 			while(rs.next()) {
 			    listeDev.add(
 				  new Devise(rs.getString("code"),rs.getString("nom"),
