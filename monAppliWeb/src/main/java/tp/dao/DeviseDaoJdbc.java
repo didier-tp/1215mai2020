@@ -100,14 +100,78 @@ public class DeviseDaoJdbc implements DeviseDao {
 
 	@Override
 	public void deleteDevise(String code) {
-		// TODO Auto-generated method stub
-
+		Connection cn = null;
+		try {
+			cn = this.etablirConnection();
+			PreparedStatement st = cn.prepareStatement("DELETE FROM Devise WHERE code=?");
+			st.setString(1, code);
+			st.executeUpdate();
+			st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("echec delete",e);
+		}
+		finally {
+			try{cn.close();}
+			catch(Exception ex) { 
+				System.err.println(ex.getMessage());
+			}
+		}
 	}
 
 
 	@Override
 	public void saveOrUpdateDevise(Devise d) {
-		// TODO Auto-generated method stub
+		if(findDeviseByCode(d.getCode())==null) {
+			insertDevise(d);	
+		}else {
+		   updateDevise(d);
+		}
+	}
+	
+	public void insertDevise(Devise d) {
+		Connection cn = null;
+		try {
+			cn = this.etablirConnection();
+			PreparedStatement st = cn.prepareStatement("INSERT INTO Devise(code,nom,eChange) VALUES(?,?,?)");
+			st.setString(1, d.getCode());
+			st.setString(2, d.getNom());
+			st.setDouble(3, d.getChange());
+			st.executeUpdate();
+			st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("echec insert",e);
+		}
+		finally {
+			try{cn.close();}
+			catch(Exception ex) { 
+				System.err.println(ex.getMessage());
+			}
+		}
+		
+	}
+	
+	public void updateDevise(Devise d) {
+		Connection cn = null;
+		try {
+			cn = this.etablirConnection();
+			PreparedStatement st = cn.prepareStatement("UPDATE Devise set nom=? , eChange=? WHERE code=?");
+			st.setString(3, d.getCode());
+			st.setString(1, d.getNom());
+			st.setDouble(2, d.getChange());
+			st.executeUpdate();
+			st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("echec update",e);
+		}
+		finally {
+			try{cn.close();}
+			catch(Exception ex) { 
+				System.err.println(ex.getMessage());
+			}
+		}
 		
 	}
 

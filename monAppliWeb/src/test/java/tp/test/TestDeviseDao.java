@@ -26,5 +26,20 @@ public class TestDeviseDao {
 		Assert.assertTrue(listeDevises.size()>=2);
 		System.out.println("listeDevises="+listeDevises);
 	}
+	
+	@Test
+	public void testCrudDevise() {
+		Devise d = new Devise("m1","monnaie1",1.1);
+		deviseDao.saveOrUpdateDevise(d);
+		Devise dRelu = deviseDao.findDeviseByCode("m1");
+		Assert.assertNotNull(dRelu);
+		Assert.assertEquals("monnaie1", dRelu.getNom());
+	    System.out.println("dRelu="+dRelu);
+	    /*
+	    deviseDao.deleteDevise("m1");
+	    Devise dSupprimee = deviseDao.findDeviseByCode("m1");
+	    Assert.assertNull(dSupprimee);
+	    */
+	}
 
 }
