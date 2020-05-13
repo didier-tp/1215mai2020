@@ -8,4 +8,13 @@ public class Pays {
    
           //fk =codeDevise
    private Devise devise;
+
+@Override
+public String toString() {
+	return "Pays [code=" + code + ", nom=" + nom + ", superficie=" + superficie + "]";
+}
+
+
+   
+   
 }
