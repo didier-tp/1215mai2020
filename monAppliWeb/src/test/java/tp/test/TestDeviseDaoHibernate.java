@@ -46,7 +46,7 @@ public class TestDeviseDaoHibernate {
 		System.out.println("listeDevises="+listeDevises);
 	}
 	
-	@Test
+	//@Test
 	public void testCrudDevise() {
 		Devise d = new Devise("m1","monnaie1",1.1);
 		deviseDao.saveOrUpdateDevise(d);
