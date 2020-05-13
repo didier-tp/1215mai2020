@@ -9,23 +9,32 @@ import tp.entity.Devise;
 public class DeviseDaoJpa implements DeviseDao {
 	
 	private EntityManager entityManager;
+	
 
 	@Override
 	public Devise findDeviseByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		Devise d =null;
+		d= entityManager.find(Devise.class, code);
+		return d;
 	}
 
 	@Override
 	public List<Devise> findAllDevise() {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.createQuery("SELECT d FROM Devise d ",Devise.class)
+				            .getResultList();
 	}
 
 	@Override
 	public void deleteDevise(String code) {
-		// TODO Auto-generated method stub
-
+		try {
+			entityManager.getTransaction().begin();
+				Devise d= entityManager.find(Devise.class, code);
+				entityManager.remove(d);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+		}
 	}
 
 	@Override
