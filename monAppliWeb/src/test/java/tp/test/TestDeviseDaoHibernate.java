@@ -14,6 +14,7 @@ import org.junit.Test;
 import tp.dao.DeviseDaoJpa;
 import tp.dao.MyJpaUtil;
 import tp.entity.Devise;
+import tp.entity.Pays;
 
 public class TestDeviseDaoHibernate {
 	
@@ -43,7 +44,13 @@ public class TestDeviseDaoHibernate {
 		List<Devise> listeDevises = deviseDao.findAllDevise();
 		Assert.assertNotNull(listeDevises);
 		Assert.assertTrue(listeDevises.size()>=2);
-		System.out.println("listeDevises="+listeDevises);
+		//System.out.println("listeDevises="+listeDevises);
+		for(Devise d : listeDevises) {
+			System.out.println(d);
+			for(Pays p : d.getListePays()) {
+				System.out.println("\t"+p);
+			}
+		}
 	}
 	
 	//@Test

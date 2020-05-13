@@ -1,5 +1,7 @@
 package tp.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +22,8 @@ public class Devise {
 	@Column(name = "eChange")
 	private Double change; //nb unité pour 1 euro
 	
+	//...
+	private List<Pays> listePays; //avec get/set
 	
 	@Override
 	public String toString() {
@@ -53,6 +57,14 @@ public class Devise {
 	}
 	public void setChange(Double change) {
 		this.change = change;
+	}
+
+	public List<Pays> getListePays() {
+		return listePays;
+	}
+
+	public void setListePays(List<Pays> listePays) {
+		this.listePays = listePays;
 	}
 	
 	
