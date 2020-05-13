@@ -11,6 +11,10 @@ public class DeviseDaoJpa implements DeviseDao {
 	private EntityManager entityManager;
 	
 
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
 	@Override
 	public Devise findDeviseByCode(String code) {
 		Devise d =null;
@@ -39,7 +43,19 @@ public class DeviseDaoJpa implements DeviseDao {
 
 	@Override
 	public void saveOrUpdateDevise(Devise d) {
-		// TODO Auto-generated method stub
+		try {
+			entityManager.getTransaction().begin();
+				Devise dExistante= entityManager.find(Devise.class, d.getCode());
+				if(dExistante==null) {
+					entityManager.persist(d);
+				}else {
+					entityManager.merge(d);
+				}
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+		}
 
 	}
 
