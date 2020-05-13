@@ -24,7 +24,7 @@ public class Devise {
 	@Column(name = "eChange")
 	private Double change; //nb unité pour 1 euro
 	
-	@OneToMany(mappedBy = "..." , fetch = FetchType.EAGER) //fetch = FetchType.EAGER temporaire
+	@OneToMany(mappedBy = "devise" , fetch = FetchType.EAGER) //fetch = FetchType.EAGER temporaire
 	private List<Pays> listePays; //avec get/set
 	
 	@Override
