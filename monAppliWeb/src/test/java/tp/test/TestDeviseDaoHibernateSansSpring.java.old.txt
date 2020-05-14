@@ -2,24 +2,42 @@ package tp.test;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
-import tp.dao.DeviseDao;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import tp.dao.DeviseDaoJpa;
+import tp.dao.MyJpaUtil;
 import tp.entity.Devise;
 import tp.entity.Pays;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/springContext.xml"})
-public class TestDeviseDaoHibernate {
+public class TestDeviseDaoHibernateSansSpring {
 	
-	@Autowired
-	private DeviseDao deviseDao; //chose à tester
+	private DeviseDaoJpa deviseDao;
+	private EntityManager em =null;
+	private static EntityManagerFactory emf = null;
 	
+	@BeforeClass
+	public static void initEmf() {
+		emf = MyJpaUtil.getEntityManagerFactory();
+	}
+	
+	@Before
+	public void initDao() {
+		deviseDao= new DeviseDaoJpa();
+		em= emf.createEntityManager();
+		deviseDao.setEntityManager(em);
+	}
+	
+	@After
+	public void endDao() {
+	   em.close();
+	}
 	
 	@Test
 	public void testFindAllDevises() {
