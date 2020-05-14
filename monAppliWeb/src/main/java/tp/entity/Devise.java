@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /*
  * classe Devise = structure de données stockée en base en fin de semaine
@@ -17,6 +18,7 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "Devise.findAllWithPays",
   query = "SELECT DISTINCT d FROM Devise d INNER JOIN FETCH d.listePays ")
+@Table(name="Devise")
 public class Devise {
 	@Id
 	@Column(length = 24)
