@@ -4,11 +4,17 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import tp.entity.Devise;
 
-@Component
+//@Component
+@Repository  // @Component de type Repository/DAO
+//pour demander à ce que cette classe soit prise en charge par Spring
+//par défaut en un seul exemplaire (comme singleton)
+//@Scope("singleton") par défaut : approprié pour une classe de traitement (Service, Dao, ...)
+//id par défaut du composant spring : deviseDaoJpa (nom de classe avec minuscule au debut)
 public class DeviseDaoJpa implements DeviseDao {
 	
 	private EntityManager entityManager;
