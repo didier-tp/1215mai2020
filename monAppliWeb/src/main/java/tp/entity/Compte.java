@@ -20,11 +20,27 @@ public class Compte {
 	private Double solde;
 	//...
 	
+	public Compte() {
+		super();
+	}
+	
+	
+	public Compte(Long numero, String label, Double solde) {
+		super();
+		this.numero = numero;
+		this.label = label;
+		this.solde = solde;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Compte [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
 	}
 	
+	
+
 	public Long getNumero() {
 		return numero;
 	}
