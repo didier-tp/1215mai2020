@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Component;
+
 import tp.entity.Devise;
 
+@Component
 public class DeviseDaoJpa implements DeviseDao {
 	
 	private EntityManager entityManager;
