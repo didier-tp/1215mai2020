@@ -1,5 +1,12 @@
 DROP TABLE IF EXISTS Pays;
 DROP TABLE IF EXISTS Devise;
+DROP TABLE IF EXISTS Compte;
+
+CREATE TABLE  Compte(
+   numero integer  auto_increment primary key,
+   label VARCHAR(64),
+   solde double
+);
 
 CREATE TABLE  Devise(
    code VARCHAR(24) primary key,
@@ -14,6 +21,9 @@ CREATE TABLE  Pays(
    codeDevise VARCHAR(24) ,
    CONSTRAINT Pays_avec_devise_valide FOREIGN KEY (codeDevise) REFERENCES Devise(code)
 );
+
+INSERT INTO Compte(label,solde) VALUES('compte 1',100.0);
+INSERT INTO Compte(label,solde) VALUES('compte 2',100.0);
 
 INSERT INTO Devise(code,nom,eChange) VALUES('EUR','Euro',1);
 INSERT INTO Devise(code,nom,eChange) VALUES('USD','Dollar',1.11);
@@ -30,3 +40,4 @@ INSERT INTO Pays(code,nom,superficie,codeDevise)
 
 SELECT * FROM Devise;
 SELECT * FROM Pays;
+SELECT * FROM Compte;
