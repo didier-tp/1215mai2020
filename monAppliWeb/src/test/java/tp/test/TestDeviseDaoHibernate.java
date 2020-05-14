@@ -13,11 +13,12 @@ import tp.dao.DeviseDao;
 import tp.entity.Devise;
 import tp.entity.Pays;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/springContext.xml"})
+@RunWith(SpringJUnit4ClassRunner.class) //pour compréhension de @Autowired sur classe de test
+@ContextConfiguration(locations={"/springContext.xml"}) //pour charger en mémoire la config spring
 public class TestDeviseDaoHibernate {
 	
-	@Autowired
+	@Autowired //demander à injecter le composant pris en charge par Spring (@Repository ou @Component)
+	           //qui est compatible avec l'interface DeviseDao (implements ...)
 	private DeviseDao deviseDao; //chose à tester
 	
 	
