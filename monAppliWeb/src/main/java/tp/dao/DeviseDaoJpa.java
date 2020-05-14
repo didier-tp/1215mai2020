@@ -1,5 +1,6 @@
 package tp.dao;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.entity.Devise;
+import tp.entity.Pays;
 
 //@Component
 @Repository // @Component de type Repository/DAO
@@ -23,11 +25,26 @@ public class DeviseDaoJpa implements DeviseDao {
 	//via META-INF/persistence.xml  , EntityManagerFactory , ...
 	private EntityManager entityManager;
 
+	public static void loadLazyCollection(Collection col) {
+		for(Object o : col) {
+			//en mode LAZY , les objets o de la collection col associés à l'objet principal
+			//sont remontés en mémoire for de la boucle for
+		}
+		//ou bien col.size();
+	}
+	
 
 	@Override
 	public Devise findDeviseByCode(String code) {
 		Devise d = null;
 		d = entityManager.find(Devise.class, code);
+		//d est ici à l'état persistant
+		loadLazyCollection(d.getListePays());
+		/*
+		for(Pays p :d.getListePays()) {
+			//en mode LAZY , les pays associés à la devise d 
+			//sont remontés en mémoire for de la boucle for
+		}*/
 		return d;
 	}
 
