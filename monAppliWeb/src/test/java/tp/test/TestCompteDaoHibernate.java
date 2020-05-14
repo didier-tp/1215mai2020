@@ -18,7 +18,7 @@ public class TestCompteDaoHibernate {
 	private CompteDao compteDao;
 	
 	@Test
-	void testAjoutCompte() {
+	public void testAjoutCompte() {
 		Compte nouveauCompte = new Compte(null,"compte qui va bien",200.0);
 		compteDao.save(nouveauCompte);
 		System.out.println("numero du compte ajouté:" + nouveauCompte.getNumero());
