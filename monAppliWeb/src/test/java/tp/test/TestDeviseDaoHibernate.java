@@ -24,6 +24,7 @@ public class TestDeviseDaoHibernate {
 	
 	@Test
 	public void testDeviseByCode() {
+		System.out.println("Pays de la devise euro:");
 		Devise deviseE = deviseDao.findDeviseByCode("EUR");
 		//deviseE est ici a l'état détaché (car dans test ou dans partie web)
 		for(Pays p : deviseE.getListePays()) {
@@ -33,15 +34,16 @@ public class TestDeviseDaoHibernate {
 	
 	@Test
 	public void testFindAllDevises() {
+		System.out.println("liste devises et leurs pays:");
 		List<Devise> listeDevises = deviseDao.findAllDevise();
 		Assert.assertNotNull(listeDevises);
 		Assert.assertTrue(listeDevises.size()>=2);
 		//System.out.println("listeDevises="+listeDevises);
 		for(Devise d : listeDevises) {
 			System.out.println(d);
-			/*for(Pays p : d.getListePays()) {
+			for(Pays p : d.getListePays()) {
 				System.out.println("\t"+p);
-			}*/
+			}
 		}
 	}
 	

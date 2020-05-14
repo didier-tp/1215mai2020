@@ -50,7 +50,8 @@ public class DeviseDaoJpa implements DeviseDao {
 
 	@Override
 	public List<Devise> findAllDevise() {
-		return entityManager.createQuery("SELECT d FROM Devise d ", Devise.class).getResultList();
+		String reqJPQL = "SELECT DISTINCT d FROM Devise d INNER JOIN FETCH d.listePays p ";
+		return entityManager.createQuery(reqJPQL, Devise.class).getResultList();
 	}
 
 	@Override
