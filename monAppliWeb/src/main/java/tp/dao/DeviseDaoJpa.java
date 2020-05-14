@@ -47,11 +47,17 @@ public class DeviseDaoJpa implements DeviseDao {
 		}*/
 		return d;
 	}
-
+	
+    /*
 	@Override
 	public List<Devise> findAllDevise() {
 		String reqJPQL = "SELECT DISTINCT d FROM Devise d INNER JOIN FETCH d.listePays p ";
 		return entityManager.createQuery(reqJPQL, Devise.class).getResultList();
+	}*/
+	
+	@Override
+	public List<Devise> findAllDevise() {
+		return entityManager.createNamedQuery("Devise.findAllWithPays", Devise.class).getResultList();
 	}
 
 	@Override

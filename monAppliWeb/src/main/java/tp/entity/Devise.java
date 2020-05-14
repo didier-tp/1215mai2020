@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /*
@@ -14,6 +15,8 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@NamedQuery(name = "Devise.findAllWithPays",
+  query = "SELECT DISTINCT d FROM Devise d INNER JOIN FETCH d.listePays ")
 public class Devise {
 	@Id
 	@Column(length = 24)
