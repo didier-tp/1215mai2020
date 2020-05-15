@@ -20,8 +20,13 @@ public class ServiceCompteImpl implements ServiceCompte {
 
 	@Override
 	public void transferer(Double montant, Long numCptDeb, Long numCptCred) {
-		// TODO Auto-generated method stub
-
+		Compte cptDeb = compteDao.findById(numCptDeb);
+		cptDeb.setSolde(cptDeb.getSolde() - montant);
+		compteDao.save(cptDeb);//explicite ou implicite
+		
+		Compte cptCred = compteDao.findById(numCptCred);
+		cptCred.setSolde(cptCred.getSolde() + montant);
+		compteDao.save(cptCred);
 	}
 
 }
