@@ -31,6 +31,8 @@ public class DeviseAction extends ActionSupport {
 		WebApplicationContext ctxSpring =
 				WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		this.deviseDao =  ctxSpring.getBean(DeviseDao.class);
+		List<Devise> devises = deviseDao.findAllDevise();
+		System.out.println("devises:"+devises);
 	}
 	
 	public String supprimerDevise() {

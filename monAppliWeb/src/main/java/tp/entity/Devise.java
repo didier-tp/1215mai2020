@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQuery(name = "Devise.findAllWithPays",
-  query = "SELECT DISTINCT d FROM Devise d INNER JOIN FETCH d.listePays ")
+  query = "SELECT DISTINCT d FROM Devise d LEFT JOIN FETCH d.listePays ")
 @Table(name="Devise")
 public class Devise {
 	@Id
