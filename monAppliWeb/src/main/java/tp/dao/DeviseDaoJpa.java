@@ -64,7 +64,6 @@ public class DeviseDaoJpa implements DeviseDao {
 	public void deleteDevise(String code) {
 		Devise d = entityManager.find(Devise.class, code);
 		entityManager.remove(d);
-		entityManager.getTransaction().commit();
 	}
 
 	@Override
