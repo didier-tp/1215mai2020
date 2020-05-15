@@ -22,6 +22,8 @@ public class Compte {
 	private Double solde;
 	//...
 	
+	private List<Client> clients; //+get/set
+	
 	public Compte() {
 		super();
 	}

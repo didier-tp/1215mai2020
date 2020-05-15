@@ -44,4 +44,10 @@ public class CompteDaoJpa implements CompteDao {
 				.getResultList();
 	}
 
+	@Override
+	public List<Compte> findComptesOfClient(Long numClient) {
+		// ...
+		return null;
+	}
+
 }
