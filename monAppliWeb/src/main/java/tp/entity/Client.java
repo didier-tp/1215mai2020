@@ -1,5 +1,6 @@
 package tp.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "Client.findAll" , query="SELECT c FROM Client c")
 public class Client {
 	
 	@Id
@@ -31,11 +34,10 @@ public class Client {
 		super();
 	}
 
-	public Client(Long numero, String nom, List<Compte> comptes) {
+	public Client(Long numero, String nom) {
 		super();
 		this.numero = numero;
 		this.nom = nom;
-		this.comptes = comptes;
 	}
 
 	public Long getNumero() {
@@ -62,6 +64,12 @@ public class Client {
 		this.comptes = comptes;
 	}
 	
+	public void addCompte(Compte c) {
+		if(comptes==null) {
+			comptes = new ArrayList<Compte>();
+		}
+		comptes.add(c);
+	}
 	
 	
 	
