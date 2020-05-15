@@ -2,12 +2,12 @@ package tp.web.actions;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,24 +15,34 @@ import com.opensymphony.xwork2.ActionSupport;
 import tp.dao.DeviseDao;
 import tp.entity.Devise;
 
+@Component //pour demander à ce que cette classe soit d'abord prise en charge par Spring
+           //avant d'être réutilisée par Struts2
+@Scope("prototype") //pour new à chaque besoin de Struts2 (inverse du singleton)
 public class DeviseAction extends ActionSupport {
 	
 	private Devise devise; //à saisir , à afficher (avec sous parties .code .nom .change)
 	private List<Devise> listeDevises; // à afficher dans un tableau
 	
+	@Autowired //pour reférencer un composant de Spring compatible avec l'interface
 	private DeviseDao deviseDao; //référence vers le Dao auquel on va déléguer certaines operations
 	
 	public DeviseAction(){
 		super();
 		devise=new Devise();
 		//deviseDao=DeviseDaoSimu.getInstance();//new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
+		
+		/*
+		//Code utile seulement dans le cas ou classe d'action de Struts n'est pas
+		//  prise en charge par spring (cad sans @Component , @Autowired , ...)
 		ServletContext servletContext = (ServletContext) 
 				ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
 		WebApplicationContext ctxSpring =
 				WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		this.deviseDao =  ctxSpring.getBean(DeviseDao.class);
-		List<Devise> devises = deviseDao.findAllDevise();
-		System.out.println("devises:"+devises);
+		
+		//List<Devise> devises = deviseDao.findAllDevise();
+		//System.out.println("devises:"+devises);
+		*/
 	}
 	
 	public String supprimerDevise() {

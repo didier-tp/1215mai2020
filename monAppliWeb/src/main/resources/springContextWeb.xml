@@ -7,11 +7,8 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="dataSourceSpringConf.xml" />
-    <import resource="jpaSpringConf.xml" />
-
-    <context:annotation-config/>
-    <context:component-scan base-package="tp.dao"/> <!-- tp.dao.. ,  -->
-    <context:component-scan base-package="tp.service"/> <!-- tp.service.. ,  -->
+    <import resource="springContext.xml" />
+   
+    <context:component-scan base-package="tp.web.actions"/> <!-- pour Struts2 -->
 
 </beans>

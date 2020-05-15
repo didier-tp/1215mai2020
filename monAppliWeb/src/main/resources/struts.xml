@@ -36,23 +36,27 @@
 			<result name="input">/pages/tva_input.jsp</result>
 		</action>
 		
+		<!-- si la classe DeviseAction n'est pas prise en charge par Spring 
+		     alors  class="tp.web.actions.DeviseAction"
+		     sinon class="deviseAction" -->
+		
 		<action name="refresh_devises"
-			class="tp.web.actions.DeviseAction" method="rafraichirListeDevise">
+			class="deviseAction" method="rafraichirListeDevise">
 			<result name="success">/pages/devises.jsp</result>
 		</action>
 		
 		<action name="supprimer_devise"
-			class="tp.web.actions.DeviseAction" method="supprimerDevise">
+			class="deviseAction" method="supprimerDevise">
 			<result name="success" type="redirect">refresh_devises</result>
 		</action>
 		
 		<action name="ajoutOuMaj_devise"
-			class="tp.web.actions.DeviseAction" method="ajouterOuMajDevise">
+			class="deviseAction" method="ajouterOuMajDevise">
 			<result name="success" type="redirect">refresh_devises</result>
 		</action>
 		
 		<action name="selectionner_devise"
-			class="tp.web.actions.DeviseAction" method="selectionnerDevise">
+			class="deviseAction" method="selectionnerDevise">
 			<result name="success">/pages/devises.jsp</result>
 		</action>
 		

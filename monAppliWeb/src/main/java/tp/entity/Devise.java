@@ -2,6 +2,7 @@ package tp.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class Devise {
 	@Column(name = "eChange")
 	private Double change; //nb unité pour 1 euro
 	
-	@OneToMany(mappedBy = "devise" , fetch = FetchType.LAZY) 
+	@OneToMany(mappedBy = "devise" , fetch = FetchType.LAZY ) 
 	private List<Pays> listePays; //avec get/set
 	
 	@Override
