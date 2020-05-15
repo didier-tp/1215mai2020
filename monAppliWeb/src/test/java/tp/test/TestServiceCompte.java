@@ -18,6 +18,22 @@ public class TestServiceCompte {
 	private ServiceCompte serviceCompte;
 	
 	@Test
+	public void testBonTransfert() {
+		Compte cptDebAvant = serviceCompte.rechercherCompte(1L);
+		System.out.println("cptDebAvant :" + cptDebAvant);
+		Compte cptCredAvant = serviceCompte.rechercherCompte(2L);
+		System.out.println("cptCredAvant :" + cptCredAvant);
+		serviceCompte.transferer(50.0, 1L, 2L);
+		Compte cptDebApres = serviceCompte.rechercherCompte(1L);
+		System.out.println("cptDebApres :" + cptDebApres);
+		Compte cptCredApres = serviceCompte.rechercherCompte(2L);
+		System.out.println("cptCredApres :" + cptCredApres);
+		Assert.assertEquals(cptDebAvant.getSolde()-50,cptDebApres.getSolde(),0.0001);
+		Assert.assertEquals(cptCredAvant.getSolde()+50,cptCredApres.getSolde(),0.0001);
+	}
+	
+	
+	@Test
 	public void testCompte() {
 		Compte c = serviceCompte.rechercherCompte(1L);
 		System.out.println("compte :" + c);
