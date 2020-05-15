@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import tp.dao.ClientDao;
 import tp.dao.CompteDao;
+import tp.dao.CompteDaoJpa;
 import tp.entity.Client;
 import tp.entity.Compte;
 
@@ -51,6 +52,7 @@ public class TestCompteDaoHibernate {
 	
 	@Test
 	public void testComptesDuClient() {
+		// compteDao = new CompteDaoJpa(); A NE SURTOUT pas faire !!!!
 		List<Compte> comptesDuClient1 = compteDao.findComptesOfClient(1L);
 		System.out.println("comptes du client 1:" + comptesDuClient1);
 		//...
