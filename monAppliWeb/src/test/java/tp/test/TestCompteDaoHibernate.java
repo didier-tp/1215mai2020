@@ -32,13 +32,16 @@ public class TestCompteDaoHibernate {
 		Assert.assertNotNull(nouveauCompte.getNumero());
 		System.out.println("numero du compte ajouté:" + nouveauCompte.getNumero());
 		
-		/*
+		
 		Client nouveauClient = new Client(null,"client qui va bien");
 		clientDao.save(nouveauClient);
 		System.out.println("numero du client ajouté:" + nouveauClient.getNumero());
 		nouveauClient.addCompte(nouveauCompte);
 		clientDao.save(nouveauClient); //ok car client=coté principal (@JoinTable)
-		*/
+		
+		List<Compte> comptesDuNouveauClient = compteDao.findComptesOfClient(nouveauClient.getNumero());
+		System.out.println("comptes du nouveau client :" + comptesDuNouveauClient);
+	
 		/* NB:
 		nouveauCompte.addClient(nouveauClient);
 		compteDao.save(nouveauCompte);
