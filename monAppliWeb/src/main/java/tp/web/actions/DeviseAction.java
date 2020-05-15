@@ -2,15 +2,17 @@ package tp.web.actions;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import tp.dao.DeviseDao;
-import tp.dao.DeviseDaoSimu;
 import tp.entity.Devise;
 
 public class DeviseAction extends ActionSupport {
@@ -23,7 +25,12 @@ public class DeviseAction extends ActionSupport {
 	public DeviseAction(){
 		super();
 		devise=new Devise();
-		deviseDao=DeviseDaoSimu.getInstance();//new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
+		//deviseDao=DeviseDaoSimu.getInstance();//new DeviseDaoSimu();  //ou bien new DeviseDaoHibernate() 
+		ServletContext servletContext = (ServletContext) 
+				ActionContext.getContext().get(ServletActionContext.SERVLET_CONTEXT);
+		WebApplicationContext ctxSpring =
+				WebApplicationContextUtils.getWebApplicationContext(servletContext);
+		this.deviseDao =  ctxSpring.getBean(DeviseDao.class);
 	}
 	
 	public String supprimerDevise() {

@@ -28,6 +28,8 @@
 	</filter-mapping>
 	
 	<listener>
+	  <!-- pour charger en mémoire la config Spring et tous les composants nécessaires
+	       dès le démarrage de l'application dans Tomcat (ressemble à main()) -->
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     
