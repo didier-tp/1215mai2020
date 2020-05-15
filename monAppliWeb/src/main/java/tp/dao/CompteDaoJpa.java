@@ -1,5 +1,6 @@
 package tp.dao;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import tp.entity.Client;
 import tp.entity.Compte;
 
 @Repository
@@ -43,11 +45,28 @@ public class CompteDaoJpa implements CompteDao {
 				createNamedQuery("Compte.findAll",Compte.class)
 				.getResultList();
 	}
+	
+	public static void loadLazyCollection(Collection col) {
+		for(Object o : col) {
+			//en mode LAZY , les objets o de la collection col associés à l'objet principal
+			//sont remontés en mémoire for de la boucle for
+		}
+		//ou bien col.size();
+	}
 
 	@Override
 	public List<Compte> findComptesOfClient(Long numClient) {
-		// ...
-		return null;
+		/*
+		// Solution 1:
+		Client cli = entityManager.find(Client.class,numClient);
+		loadLazyCollection(cli.getComptes());
+		return cli.getComptes();
+		*/
+		//Solution 2:
+		String reqJpaQL="SELECT cpt FROM Client cli JOIN cli.comptes cpt WHERE cli.numero= :numClient";
+		return entityManager.createQuery(reqJpaQL,Compte.class)
+				.setParameter("numClient", numClient)
+				.getResultList();
 	}
 
 }

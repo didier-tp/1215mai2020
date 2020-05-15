@@ -1,5 +1,7 @@
 package tp.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,14 @@ public class TestCompteDaoHibernate {
 		System.out.println("numero du compte ajouté:" + nouveauCompte.getNumero());
 		//...
 		Assert.assertNotNull(nouveauCompte.getNumero());
+	}
+	
+	@Test
+	public void testComptesDuClient() {
+		List<Compte> comptesDuClient1 = compteDao.findComptesOfClient(1L);
+		System.out.println("comptes du client 1:" + comptesDuClient1);
+		//...
+		Assert.assertNotNull(comptesDuClient1);
 	}
 
 }

@@ -1,9 +1,12 @@
 package tp.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -20,8 +23,8 @@ public class Compte {
 	private String label;
 	
 	private Double solde;
-	//...
 	
+	@ManyToMany(mappedBy = "comptes")
 	private List<Client> clients; //+get/set
 	
 	public Compte() {
@@ -64,6 +67,16 @@ public class Compte {
 	}
 	public void setSolde(Double solde) {
 		this.solde = solde;
+	}
+
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
 	
 	

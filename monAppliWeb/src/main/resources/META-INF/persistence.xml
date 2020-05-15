@@ -8,6 +8,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	          <class>tp.entity.Devise</class>
 	          <class>tp.entity.Pays</class>
 	          <class>tp.entity.Compte</class>
+	          <class>tp.entity.Client</class>
 	       <properties>
 				<property name="hibernate.dialect"
 							value="org.hibernate.dialect.H2Dialect" />
