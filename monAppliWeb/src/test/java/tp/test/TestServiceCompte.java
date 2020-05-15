@@ -32,6 +32,26 @@ public class TestServiceCompte {
 		Assert.assertEquals(cptCredAvant.getSolde()+50,cptCredApres.getSolde(),0.0001);
 	}
 	
+	@Test
+	public void testMauvaisTransfert() {
+		Compte cptDebAvant = serviceCompte.rechercherCompte(1L);
+		System.out.println("cptDebAvant :" + cptDebAvant);
+		Compte cptCredAvant = serviceCompte.rechercherCompte(2L);
+		System.out.println("cptCredAvant :" + cptCredAvant);
+		try {
+			serviceCompte.transferer(50.0, 1L, -2L);//-2 n'existe pas
+		} catch (Exception e) {
+			//e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		Compte cptDebApres = serviceCompte.rechercherCompte(1L);
+		System.out.println("cptDebApres :" + cptDebApres);
+		Compte cptCredApres = serviceCompte.rechercherCompte(2L);
+		System.out.println("cptCredApres :" + cptCredApres);
+		Assert.assertEquals(cptDebAvant.getSolde(),cptDebApres.getSolde(),0.0001);
+		Assert.assertEquals(cptCredAvant.getSolde(),cptCredApres.getSolde(),0.0001);
+	}
+	
 	
 	@Test
 	public void testCompte() {

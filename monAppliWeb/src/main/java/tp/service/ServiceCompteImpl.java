@@ -2,12 +2,13 @@ package tp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tp.dao.CompteDao;
 import tp.entity.Compte;
 
 @Service // ou @Component
-//@Transactional
+@Transactional
 public class ServiceCompteImpl implements ServiceCompte {
 	
 	@Autowired
